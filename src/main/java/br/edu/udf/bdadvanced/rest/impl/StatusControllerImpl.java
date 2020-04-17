@@ -3,7 +3,11 @@ package br.edu.udf.bdadvanced.rest.impl;
 import br.edu.udf.bdadvanced.model.Status;
 import br.edu.udf.bdadvanced.rest.StatusController;
 import br.edu.udf.bdadvanced.service.StatusService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
