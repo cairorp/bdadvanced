@@ -1,8 +1,9 @@
 package br.edu.udf.bdadvanced.rest;
 
-import br.edu.udf.bdadvanced.dto.LoginDTO;
+import br.edu.udf.bdadvanced.dto.AuthenticateDTO;
+import org.springframework.http.ResponseEntity;
 
 public interface AuthenticationController {
 
-    boolean authenticate(LoginDTO login);
+    ResponseEntity authenticate(AuthenticateDTO login);
 }
