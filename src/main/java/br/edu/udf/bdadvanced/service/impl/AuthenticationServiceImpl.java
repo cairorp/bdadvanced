@@ -1,5 +1,6 @@
 package br.edu.udf.bdadvanced.service.impl;
 
+import br.edu.udf.bdadvanced.dto.UserDTO;
 import br.edu.udf.bdadvanced.exception.AuthenticationException;
 import br.edu.udf.bdadvanced.model.User;
 import br.edu.udf.bdadvanced.service.AuthenticationService;
@@ -18,13 +19,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public boolean authenticate(String login, String password) {
+    public UserDTO authenticate(String login, String password) {
         Optional<User> result = userService.findForLoginAndPassword(login, password);
-        try {
-            result.orElseThrow(() ->  new AuthenticationException("Login ou senha incorreto!"));
-            return true;
-        }catch(AuthenticationException ex){
-            return false;
-        }
+        UserDTO userDTO = new UserDTO();
+
+        result.orElseThrow(() -> new AuthenticationException("Login ou senha incorreto!"));
+        userDTO.setCdUser(result.get().getCdUser());
+        userDTO.setFirstName(result.get().getFirstName());
+        return userDTO;
     }
+
 }

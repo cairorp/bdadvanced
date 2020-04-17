@@ -1,5 +1,7 @@
 package br.edu.udf.bdadvanced.service;
 
+import br.edu.udf.bdadvanced.dto.UserDTO;
+
 public interface AuthenticationService {
-    boolean authenticate(String login, String password);
+    UserDTO authenticate(String login, String password);
 }
