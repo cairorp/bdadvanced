@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,6 +27,11 @@ public class UserServiceImpl implements UserService {
         user.setAdress(adressService.findOrSave(user.getAdress()));
         user.setPassword(getEncryptoPassword(user.getPassword()));
         userRepository.save(user);
+    }
+
+    @Override
+    public Optional<User> findForLoginAndPassword(String login, String password) {
+        return userRepository.findByLoginAndPassword(login, getEncryptoPassword(password));
     }
 
     private String getEncryptoPassword(String password) {
